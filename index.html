@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Unity WebGL Player | My project</title>
+  </head>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0">
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+      import { getDatabase } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDglPdzguhVXYR30xORnB-cTd3sKBiU7lY",
+        authDomain: "sp-shot.firebaseapp.com",
+        databaseURL:
+          "https://sp-shot-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "sp-shot",
+        storageBucket: "sp-shot.appspot.com",
+        messagingSenderId: "455535254966",
+        appId: "1:455535254966:web:52b1485f92a00d5ca2f517",
+        measurementId: "G-2MDDZF9ZB4",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+    <canvas
+      id="unity-canvas"
+      width="1920"
+      height="1080"
+      style="width: 100%; height: 100%; background: #231f20"
+    ></canvas>
+    <script src="Build/sp_shot_advanced.loader.js"></script>
+    <script>
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement("meta");
+        meta.name = "viewport";
+        meta.content =
+          "width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes";
+        document.getElementsByTagName("head")[0].appendChild(meta);
+
+        var canvas = document.querySelector("#unity-canvas");
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.position = "fixed";
+
+        document.body.style.textAlign = "left";
+      }
+
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/sp_shot_advanced.data",
+        frameworkUrl: "Build/sp_shot_advanced.framework.js",
+        codeUrl: "Build/sp_shot_advanced.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "My project",
+        productVersion: "1.0",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
+    </script>
+  </body>
+</html>
