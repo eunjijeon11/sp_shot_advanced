@@ -21,6 +21,10 @@
 - 콩송편 / -5점
 - 송편을 모두 떨어뜨리고 남은 달 / 5점
 
+## 🌱 시드번호
+<게임 설정>에서 시드번호를 통해 맵 구조를 바꿀 수 있습니다!  
+점수를 얻기 쉬운 시드번호를 찾아보세요😎
+
 ## 🎵 Background Music License
 
 Carefree Kevin MacLeod (incompetech.com)  
