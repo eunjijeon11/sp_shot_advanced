@@ -1,20 +1,56 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | My project</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>송편 터뜨리기</title>
   </head>
-  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=1920 height=1080 style="width: 1920px; height: 1080px; background: #231F20"></canvas>
+  <body
+    style="
+      text-align: center;
+      padding: 0;
+      border: 0;
+      margin: 0;
+      background-color: rgb(34, 34, 34);
+    "
+  >
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database-compat.js"></script>
+    <script type="module">
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDglPdzguhVXYR30xORnB-cTd3sKBiU7lY",
+        authDomain: "sp-shot.firebaseapp.com",
+        databaseURL:
+          "https://sp-shot-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "sp-shot",
+        storageBucket: "sp-shot.appspot.com",
+        messagingSenderId: "455535254966",
+        appId: "1:455535254966:web:52b1485f92a00d5ca2f517",
+        measurementId: "G-2MDDZF9ZB4",
+      };
+
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+      const database = app.database();
+    </script>
+
+    <canvas
+      id="unity-canvas"
+      width="1920"
+      height="1080"
+      style="height: 100vh; background: #231f20"
+    ></canvas>
     <script src="Build/sp_shot_advanced.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
+        var meta = document.createElement("meta");
+        meta.name = "viewport";
+        meta.content =
+          "width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes";
+        document.getElementsByTagName("head")[0].appendChild(meta);
 
         var canvas = document.querySelector("#unity-canvas");
         canvas.style.width = "100%";
@@ -34,6 +70,9 @@
         productVersion: "1.0",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      }).then((unityInstance) => {
+        // add this line :
+        window.unityInstance = unityInstance;
       });
     </script>
   </body>
